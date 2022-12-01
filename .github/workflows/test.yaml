@@ -1,0 +1,17 @@
+name: Print Hello GitHub Actions
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Hello GitHub Actions
+        run: echo "Hello GitHub Actions"
+
+  build-compute:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Compute Action
+        id: compute
+        run: echo "::set-output name=answer::$(echo 2 + 2)"
