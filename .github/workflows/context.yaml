@@ -12,15 +12,15 @@ jobs:
         with:
            fetch-depth: 0
 
-      - name: check for context
-        if: ${{ github.event_name=='pull_request'}}
+      - name: check for context for pull
+        if: ${{ github.event_name=='pull_request' }}
         run: |
           Hi ${{ github.actor }} this is ${{ github.repository }}
           current workflow is ${{ github.workflow }}
           github_action gives ${{ github.action }}
-          github base_ref give ${{ github.base_ref}} 
+          github base_ref give ${{ github.base_ref }} 
 
-      - name: check for context
+      - name: check for context for push
         if: ${{ github.event_name=='push'}}
         run: |
           Hi ${{ github.actor }} this is ${{ github.repository }}
