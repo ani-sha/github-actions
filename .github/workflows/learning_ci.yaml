@@ -3,13 +3,13 @@ run-name: "Running Learning CI w.r.t ${{ github.actor }} - ${{ github.event_name
 on:
   pull_request:
     types:
-   - "opened"
+    - "opened"
     - "edited"
     - "labeled"
     - "assigned"
     - "reopened"
     branches:
-   - "main"
+    - "main"
     - "master"
  
 jobs:
@@ -25,6 +25,9 @@ jobs:
     - name: "Look for added, changed and modified files in ${{github.repository }}, PR - ${{ github.event.number }}"
       uses: "tj-actions/changed-files@v34"
       id: "changed-files"
+      with:
+          files: |
+            .github/workflows
  
     - name: "List all changed and modified files, if there are any"
       run: |
