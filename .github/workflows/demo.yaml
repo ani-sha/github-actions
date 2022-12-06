@@ -1,4 +1,4 @@
-name: "Files changed"
+name: "Files Changed"
 
 on: [pull_request]
 
@@ -28,11 +28,11 @@ jobs:
       if: ${{ steps.changed-files.outputs.all_changed_and_modified_files }}
 
     - name: "Comment PR if there are any modified files"
-      uses: "actions-comment-pull-request@v2"
+      uses: "thollander/actions-comment-pull-request@v2"
       with:
         message: |
           Hello ${{ github.actor }} :wave:
-          Fyi, We see following files have been modified in ${{github.repository }}, PR - ${{ github.event.number }}
+          Fyi, We see following files have been modified in ${{ github.repository }}
 
           ```
           ${{ steps.changed-files.outputs.modified_files }}
