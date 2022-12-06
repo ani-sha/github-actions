@@ -28,7 +28,7 @@ jobs:
       if: ${{ steps.changed-files.outputs.all_changed_and_modified_files }}
 
     - name: "Comment PR if there are any modified files"
-      uses: "thollander/actions-comment-pull-request@v2"
+      uses: "actions-comment-pull-request@v2"
       with:
         message: |
           Hello ${{ github.actor }} :wave:
