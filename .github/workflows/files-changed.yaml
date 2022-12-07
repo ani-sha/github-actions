@@ -13,21 +13,25 @@ jobs:
       with:
         fetch-depth: 0
 
-    - name: Verify Changed files
-        uses: tj-actions/verify-changed-files@v12
-        id: verify_changed_files
-        with:
+    - name: "Look for added, changed and modified files in ${{ github.repository }}, PR - ${{ github.event.number }}"
+      uses: "tj-actions/changed-files@v34"
+      id: "changed-files"
+      with:
           files: |
             .github/workflows
 
-    - name: Files changed
-        if: steps.verify_changed_files.outputs.files_changed == 'true'
-        run: |
-          Hello ${{ github.actor }}, a file has uncommitted changes
-        
-    - name: Comment if there are any changes in the files
-        uses: "thollander/actions-comment-pull-request@v2"
-        with:
-          message: |
+    - name: "List all changed and modified files, if there are any"
+      run: |
+       for file in ${{ steps.changed-files.outputs.all_changed_and_modified_files }}; do
+          echo "$file"
+        done
+      if: ${{ steps.changed-files.outputs.all_changed_and_modified_files }}
+
+    - name: "Comment if there are any changes in files"
+      uses: "thollander/actions-comment-pull-request@v2"
+      with:
+        message: |
           Hi ${{ github.actor }} 
           The following files have been changed in ${{github.repository }}
+
+      if: ${{ steps.changed-files.outputs.all_changed_and_modified_files }}
