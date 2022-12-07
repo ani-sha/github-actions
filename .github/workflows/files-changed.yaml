@@ -1,6 +1,6 @@
 name: Files Changed
 
-on: [pull_request]
+on: [pull_request, push]
     
 jobs:
   build:
@@ -30,9 +30,4 @@ jobs:
         with:
           message: |
           Hi ${{ github.actor }} 
-          The following files have been changed in ${{github.repository }},
-
-          ```
-          ${{ steps.changed-files.outputs.modified_files }}
-          ```
-         if: ${{ steps.changed-files.outputs.all_changed_and_modified_files }}
+          The following files have been changed in ${{github.repository }}
