@@ -1,6 +1,6 @@
 name: "Files Changed"
 
-on: [pull_request]
+on: [pull_request_target]
 
 jobs:
   check-changed-and-modifed-files:
