@@ -12,8 +12,10 @@ jobs:
       - uses: "actions/setup-node@v3"
         with:
            node-version: 16
-      - run: npm install
-
+      - package-lock.json:
+            npm install
+      - yarn.lock:
+            yarn --check-files --frozen-lockfile --non-interactive
 
 
 
