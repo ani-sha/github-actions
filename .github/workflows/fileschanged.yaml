@@ -1,0 +1,37 @@
+name: Files Changed
+
+on: [pull_request, push]
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: "Checkout ${{ github.repository }} repository"
+
+      uses: "actions/checkout@v3"
+      with:
+        fetch-depth: 0
+
+    - name: "Look for added, changed and modified files in ${{ github.repository }}, PR - ${{ github.event.number }}"
+      uses: "tj-actions/changed-files@v34"
+      id: "changed-files"
+      with:
+          files: |
+            .github/workflows
+
+    - name: "List all changed and modified files, if there are any"
+      run: |
+       for file in ${{ steps.changed-files.outputs.all_changed_and_modified_files }}; do
+          echo "$file"
+        done
+      if: ${{ steps.changed-files.outputs.all_changed_and_modified_files }}
+
+    - name: "Comment if there are any changes in files"
+      uses: "thollander/actions-comment-pull-request@v2"
+      with:
+        message: |
+          Hi ${{ github.actor }} 
+          The following files have been changed in ${{github.repository }}
+
+      if: ${{ steps.changed-files.outputs.all_changed_and_modified_files }}
