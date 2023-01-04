@@ -1,6 +1,6 @@
 function lazy_pig(){
 	for (let i = 1; i <= 1000; i++) {
-		console.log(String(i) + '|' + "GRUMPY OLD PIG, OINK, OINK, OINK ...")
+		console.log(String(i) + '|' + "OLD GRUMPY PIG, OINK, OINK, OINK ...")
 	}
 }
 
