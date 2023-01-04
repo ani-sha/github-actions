@@ -16,5 +16,10 @@ jobs:
         run: "node -v"
         id: "node_version"
 
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          ref: main
+
       - name: "Say, I am grumpy pig"
         run: "node scripts/grumpy_pig.js"
