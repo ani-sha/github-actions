@@ -18,7 +18,7 @@ jobs:
 
       - uses: actions/checkout@v2
         with:
-          fetch-depth: 0
+          fetch-depth: 55
           ref: main
 
       - name: "Say, I am grumpy pig"
