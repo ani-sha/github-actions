@@ -8,6 +8,8 @@ jobs:
       steps:
       - name: "Checkout ${{ github.repository }} repository"
         uses: "actions/checkout@v3"
+        with:
+         fetch-depth: 55
 
       - name: "Setup Node.js environment"
         uses: "actions/setup-node@v3"

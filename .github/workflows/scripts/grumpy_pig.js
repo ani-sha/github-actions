@@ -3,5 +3,4 @@ function lazy_pig(){
 		console.log(String(i) + '|' + "GRUMPY OLD PIG, OINK, OINK, OINK ...")
 	}
 }
-
 lazy_pig()
