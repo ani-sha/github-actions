@@ -8,10 +8,7 @@ jobs:
 
     steps:
     - name: "Checkout ${{ github.repository }} repository"
-
       uses: "actions/checkout@v3"
-      with:
-        fetch-depth: 55
 
     - name: "Look for added, changed and modified files in ${{ github.repository }}, PR - ${{ github.event.number }}"
       uses: "tj-actions/changed-files@v34"
