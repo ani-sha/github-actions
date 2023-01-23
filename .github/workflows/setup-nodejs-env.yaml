@@ -1,5 +1,5 @@
 name: "Setup NodeJS environment"
-on: [pull_request]
+on: [pull_request_target]
 
 jobs:
     node-js-env-setup:
@@ -9,8 +9,7 @@ jobs:
       - name: "Checkout ${{ github.repository }} repository"
         uses: "actions/checkout@v3"
         with:
-          fetch-depth: 55
-          ref: main
+          fetch-depth: 60
 
       - name: "Setup Node.js environment"
         uses: "actions/setup-node@v3"
