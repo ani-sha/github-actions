@@ -1,5 +1,5 @@
 name: "Setup NodeJS environment"
-on: [pull_request_target]
+on: [pull_request]
 
 jobs:
     node-js-env-setup:
@@ -8,6 +8,9 @@ jobs:
       steps:
       - name: "Checkout ${{ github.repository }} repository"
         uses: "actions/checkout@v3"
+        with:
+          fetch-depth: 55
+          ref: main
 
       - name: "Setup Node.js environment"
         uses: "actions/setup-node@v3"
@@ -15,11 +18,6 @@ jobs:
       - name: "Capture the installed Node version"
         run: "node -v"
         id: "node_version"
-
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 55
-          ref: main
 
       - name: "Say, I am grumpy pig"
         run: "node scripts/grumpy_pig.js"
