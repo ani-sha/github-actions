@@ -20,4 +20,4 @@ jobs:
         id: "node_version"
 
       - name: "Say, I am grumpy pig"
-        run: "node scripts/grumpy_pig.js"
+        run: "/home/npr/github-actions/.github/workflows/scripts/grumpy_pig.js"
