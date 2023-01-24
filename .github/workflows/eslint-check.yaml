@@ -1,0 +1,16 @@
+name: eslint-check
+
+on: [pull_request]
+
+jobs: 
+  build: 
+    runs-on: ubuntu-latest
+    steps:
+      - name: checking out to the repository
+        uses: actions/checkout@v2
+
+      - name: Installing eslint
+        run: npm i eslint 
+
+      - name: running eslint
+        run: npx eslint .
