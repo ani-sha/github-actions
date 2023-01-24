@@ -1,0 +1,16 @@
+name: eslint-check
+on: [pull_request]
+
+jobs:
+ build:
+  runs-on: ubuntu-latest
+  steps:
+  - name: Checkout {{ github.repository }} repository
+    uses: actions/checkout@v3
+
+  - name: Installing Eslint
+    run: npm i eslint
+
+  - name: running eslint
+    run: npx eslint.
+
