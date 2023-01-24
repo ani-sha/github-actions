@@ -1,0 +1,19 @@
+name: Setup NodeJS environment
+on: [pull_request]
+
+jobs:
+    node-js-env-setup:
+      runs-on: ubuntu-latest
+
+      steps:
+      - name: Checkout ${{ github.repository }} repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3
+
+      - name: Capture the installed Node version
+        run: node -v
+
+      - name: Creating build directory
+        run: npm run build --if-present
